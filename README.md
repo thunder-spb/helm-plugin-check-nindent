@@ -5,7 +5,7 @@ Simple plugin for Helm to check if the number of whitespaces equals defined nind
 Just run this:
 
 ```bash
-$ helm plugin add https://github.com/thunder-spb/helm-plugin-check-nindent
+$ helm plugin add https://github.com/thunder-spb/helm-plugin-check-nindent.git
 ```
 
 ## Usage

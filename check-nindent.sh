@@ -9,9 +9,21 @@ BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NOC='\033[0m'
 
+function usage() {
+  _info "Usage: helm check-nindent <chart folder>"
+  exit 0
+}
+
+
+# getting filename
+_CHART_FOLDER="$1"
+
+if [[ $# -eq 0 || "$_CHART_FOLDER" == "help" || "$_CHART_FOLDER" == "-h" || "$_CHART_FOLDER" == "--help" ]]; then
+  usage
+fi
+
 if [[ $# -ne 1 ]]; then
-    echo "Usage: $0 <chart folder>"
-    exit 1
+  usage
 fi
 
 function _err() {
@@ -30,10 +42,6 @@ function _success() {
 function _warn() {
   echo -e "${YELLOW}WARN: ${1}${NOC}"
 }
-
-# getting filename
-_CHART_FOLDER="$1"
-[[ -z "$_CHART_FOLDER" ]] && _fatal "No chart folder provided"
 
 _CHART_FOLDER_BASE=$(basename $(readlink -f ${_CHART_FOLDER}))/templates
 
