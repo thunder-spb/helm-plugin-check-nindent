@@ -1,0 +1,10 @@
+name: "check-nindent"
+# Version is the version of Helm plus the number of official builds for this
+# plugin
+version: "1.0.0"
+usage: "Simple and dumb plugin to just compare whitespaces count against defined value in nindent"
+description: "Simple and dumb plugin to just compare whitespaces count against defined value in nindent"
+useTunnel: true
+command: "$HELM_PLUGIN_DIR/check-nindent.sh"
+hooks:
+  install: chmod +x $HELM_PLUGIN_DIR/check-nindent.sh
