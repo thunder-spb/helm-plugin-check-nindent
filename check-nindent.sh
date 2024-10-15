@@ -9,6 +9,23 @@ BLUE='\033[0;34m'
 YELLOW='\033[1;33m'
 NOC='\033[0m'
 
+function _err() {
+  echo -e "${RED}ERROR: ${1}${NOC}"
+}
+function _fatal() {
+  echo -e "${RED}FATAL: ${1}${NOC}"
+  exit 1
+}
+function _info() {
+  echo -e "${BLUE}INFO: ${1}${NOC}"
+}
+function _success() {
+  echo -e "${GREEN}SUCCESS: ${1}${NOC}"
+}
+function _warn() {
+  echo -e "${YELLOW}WARN: ${1}${NOC}"
+}
+
 function usage() {
   _info "Usage: helm check-nindent <chart folder>"
   exit 0
@@ -26,22 +43,6 @@ if [[ $# -ne 1 ]]; then
   usage
 fi
 
-function _err() {
-  echo -e "${RED}ERROR: ${1}${NOC}"
-}
-function _fatal() {
-  echo -e "${RED}FATAL: ${1}${NOC}"
-  exit 1
-}
-function _info() {
-  echo -e "${BLUE}INFO: ${1}${NOC}"
-}
-function _success() {
-  echo -e "${GREEN}SUCCESS: ${1}${NOC}"
-}
-function _warn() {
-  echo -e "${YELLOW}WARN: ${1}${NOC}"
-}
 
 _CHART_FOLDER_BASE=$(basename $(readlink -f ${_CHART_FOLDER}))/templates
 
